@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            align-items: center;
+            padding: 20px;
+        }
+        .content {
+            flex: 1;
+            padding: 40px;
+        }
+        .image {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00ff87, #60efff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(45deg, #00ff87, #60efff);
+            color: #000;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,255,135,0.2);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,255,135,0.1);
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column-reverse;
+            }
+            .content, .image {
+                padding: 20px 0;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>{{ title }}</h1>
+            <p>{{ description }}</p>
+            <a href="{{ link }}" class="btn" target="_blank">Купить на маркетплейсе</a>
+        </div>
+        <div class="image">
+            <img src="{{ image_url }}" alt="{{ title }}">
+        </div>
+    </div>
+</body>
+</html>
