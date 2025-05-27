@@ -3,7 +3,6 @@ import json
 import httpx
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InputFile
-from aiogram.utils.executor import start_webhook
 from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader
 from datetime import datetime
@@ -115,24 +114,3 @@ async def handle_photo(msg: types.Message):
 
     # Здесь можно автоматически создать счётчик Яндекс.Метрики
     # await bot.send_message(msg.from_user.id, "📊 Создаём счётчик Метрики…")
-
-# --- Запуск webhook ---
-async def on_startup(dp: Dispatcher):
-    await bot.set_webhook(f"{SITE_DOMAIN}/webhook/{BOT_TOKEN}")
-
-async def on_shutdown(dp: Dispatcher):
-    await bot.delete_webhook()
-
-def run():
-    start_webhook(
-        dispatcher=dp,
-        webhook_path=f"/webhook/{BOT_TOKEN}",
-        on_startup=on_startup,
-        on_shutdown=on_shutdown,
-        skip_updates=True,
-        host="0.0.0.0",
-        port=8000,
-    )
-
-if __name__ == "__main__":
-    run()
