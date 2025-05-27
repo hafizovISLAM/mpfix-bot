@@ -86,7 +86,6 @@ async def handle_photo(msg: types.Message):
     if not data or data.get("state") != "awaiting_photo":
         await msg.answer("Сначала отправьте заголовок, описание и ссылку")
         return
-
     # Скачиваем фото
     file = await bot.get_file(msg.photo[-1].file_id)
     file_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file.file_path}"
