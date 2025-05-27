@@ -2,7 +2,7 @@ import os
 import json
 import httpx
 from aiogram import Bot, Dispatcher, types
-from aiogram.types import InputFile
+# from aiogram.utils.executor import start_webhook    <- убираем
 from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader
 from datetime import datetime
@@ -15,9 +15,9 @@ YANDEX_CLIENT_ID = os.getenv("YANDEX_CLIENT_ID")
 YANDEX_CLIENT_SECRET = os.getenv("YANDEX_CLIENT_SECRET")
 SITE_DOMAIN = "https://mp-fix.ru"
 
-# --- Инициализация бота и диспетчера ---
+# --- Инициализация ---
 bot = Bot(token=BOT_TOKEN)
-bot.set_current(bot)
+# bot.set_current(bot)   <- убираем
 dp = Dispatcher(bot)
 
 # --- Хранилище токенов и данных пользователя ---
