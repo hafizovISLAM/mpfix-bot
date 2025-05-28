@@ -1,11 +1,14 @@
 import os
 import json
 import httpx
+from datetime import datetime
+
 from aiogram import Bot, Dispatcher, types
-# from aiogram.utils.executor import start_webhook    <- убираем
+from aiogram.fsm.storage.memory import MemoryStorage    # <- вот здесь
+
+# from aiogram.utils.executor import start_webhook    <- убрали
 from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader
-from datetime import datetime
 
 load_dotenv()
 
@@ -18,7 +21,8 @@ SITE_DOMAIN = "https://mp-fix.ru"
 # --- Инициализация ---
 bot = Bot(token=BOT_TOKEN)
 # bot.set_current(bot)   <- убираем
-dp = Dispatcher(bot)
+storage = MemoryStorage()
+dp      = Dispatcher(storage=storage)
 
 # --- Хранилище токенов и данных пользователя ---
 TOKEN_FILE = "tokens.json"
